@@ -11,30 +11,23 @@ import {
 } from '@/components/ui/navigation-menu'
 import Link from 'next/link'
 import Image from 'next/image'
-
+import { ModeToggle } from './ui/toggle-mode'
 
 const Navbar = () => {
   return (
-    <NavigationMenu >
+    <NavigationMenu>
       <NavigationMenuList className='w-screen  flex justify-between px-8 py-2 border-b border-violet-700'>
         <NavigationMenuItem>
-          <div className='flex'>
-            <a
-              className='pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0'
-              href='https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              By{' '}
-              <Image
-                src='/vercel.svg'
-                alt='Vercel Logo'
-                className='dark:invert'
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
+          <div className='flex items-center'>
+            <Image
+              src='/invoices-icon.png'
+              alt='Vercel Logo'
+              className='dark:invert'
+              width={40}
+              height={20}
+              priority
+            />
+            <h1 className='ml-2 font-bold text-xl'>Generator Faktur</h1>
           </div>
         </NavigationMenuItem>
         <NavigationMenuItem>
@@ -48,7 +41,9 @@ const Navbar = () => {
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
-        
+        <NavigationMenuItem>
+          <ModeToggle />
+        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   )
