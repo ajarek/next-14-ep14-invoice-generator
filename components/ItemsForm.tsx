@@ -19,7 +19,7 @@ export const ItemsForm = () => {
   const [row, setRow] = useState([<Row key={Math.floor(Math.random() * 1000)} />])
   return (
     <div className='p-12 flex flex-col'>
-      <Button className='mb-4 self-end bg-green-500 mx-4' onClick={() => setRow([...row, <Row key={Math.floor(Math.random() * 1000)} />])}>dodaj</Button>
+      <Button className='mb-4 self-end bg-green-500  hover:bg-green-400 mx-4' onClick={() => setRow([...row, <Row key={Math.floor(Math.random() * 1000)} />])}>Dodaj</Button>
       <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
@@ -28,9 +28,10 @@ export const ItemsForm = () => {
             <TableHead>Nazwa </TableHead>
             <TableHead>Ilość</TableHead>
             <TableHead>Cena</TableHead>
-            <TableHead>Vat</TableHead>
+            <TableHead>Stawka Vat</TableHead>
             <TableHead>Razem</TableHead>
             <TableHead>Usuń</TableHead>
+            <TableHead>Zatwierdź</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
