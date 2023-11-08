@@ -15,35 +15,35 @@ import {
 } from "@/components/ui/table"
 
 
-export const ItemsForm = ()=>{
-  const [row, setRow]=useState([<Row key={Math.floor(Math.random()*1000)}/>])
+export const ItemsForm = () => {
+  const [row, setRow] = useState([<Row key={Math.floor(Math.random() * 1000)} />])
   return (
-    <div>
-      <Button onClick={()=>setRow([...row,<Row key={Math.floor(Math.random()*1000)}/>])}>dodaj</Button>
+    <div className='p-12 flex flex-col'>
+      <Button className='mb-4 self-end bg-green-500 mx-4' onClick={() => setRow([...row, <Row key={Math.floor(Math.random() * 1000)} />])}>dodaj</Button>
       <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
-    <TableHeader>
-      <TableRow>
-        <TableHead className="w-[100px]">Nr</TableHead>
-        <TableHead>Nazwa </TableHead>
-        <TableHead>Ilość</TableHead>
-        <TableHead>Cena</TableHead>
-        <TableHead>Vat</TableHead>
-        <TableHead>Razem</TableHead>
-        <TableHead>Usuń</TableHead>
-      </TableRow>
-    </TableHeader>
-    <TableBody>
-    {row.map((el,index)=>{
-          return(
-            <TableRow key={index}>{el}</TableRow>
-          )
-        })}
+        <TableCaption>A list of your recent invoices.</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[100px]">Nr</TableHead>
+            <TableHead>Nazwa </TableHead>
+            <TableHead>Ilość</TableHead>
+            <TableHead>Cena</TableHead>
+            <TableHead>Vat</TableHead>
+            <TableHead>Razem</TableHead>
+            <TableHead>Usuń</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {row.map((el, index) => {
+            return (
+              <TableRow key={index}>{el}</TableRow>
+            )
+          })}
         </TableBody>
-    </Table>
-     
-        
-      
+      </Table>
+
+
+
     </div>
   )
 }
