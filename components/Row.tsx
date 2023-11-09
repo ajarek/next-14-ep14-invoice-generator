@@ -19,17 +19,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { saveStorage, deleteStorage } from '@/lib/localStorage'
 
-import { saveStorage } from '@/lib/localStorage'
 const Row = () => {
+  
   const [nr, setNr] = useState<string>()
   const [name, setName] = useState<string>()
   const [quantity, setQuantity] = useState<string>()
   const [price, setPrice] = useState<string>()
   const [vat, setVat] = useState<string>()
-
   let rowPrice = Number(quantity) * Number(price) * (1 + Number(vat) / 100) || 0
 
+
+
+ 
   useEffect(() => {
     const dataRow = { nr, name, quantity, price, vat, rowPrice }
     if (rowPrice !== 0) {

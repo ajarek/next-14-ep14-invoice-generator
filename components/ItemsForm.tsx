@@ -13,15 +13,19 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-
+import { saveStorage,fetchStorage } from '@/lib/localStorage'
 
 export const ItemsForm = () => {
   const [row, setRow] = useState([<Row key={Math.floor(Math.random() * 1000)} />])
+
+ const arrayRow=fetchStorage('ArrayRow')
+ const totalPrice=arrayRow?.reduce((acc,item)=>acc+Number(item.rowPrice),0)||0
+
   return (
     <div className='p-12 flex flex-col'>
       <Button className='mb-4 self-end bg-green-500  hover:bg-green-400 mx-4' onClick={() => setRow([...row, <Row key={Math.floor(Math.random() * 1000)} />])}>Dodaj</Button>
       <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
+        <TableCaption>Wartość Faktury: {totalPrice.toFixed(2)} PLN</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Nr</TableHead>
@@ -31,7 +35,6 @@ export const ItemsForm = () => {
             <TableHead>Stawka Vat</TableHead>
             <TableHead>Razem</TableHead>
             <TableHead>Usuń</TableHead>
-            <TableHead>Zatwierdź</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
