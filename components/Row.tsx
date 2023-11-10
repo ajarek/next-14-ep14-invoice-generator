@@ -1,5 +1,5 @@
 'use client'
-
+import {saveStorage} from '@/lib/localStorage'
 import React, { useEffect, useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -19,7 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { saveStorage, deleteStorage } from '@/lib/localStorage'
+
 
 const Row = () => {
   
@@ -30,15 +30,21 @@ const Row = () => {
   const [vat, setVat] = useState<string>()
   let rowPrice = Number(quantity) * Number(price) * (1 + Number(vat) / 100) || 0
 
-
-
- 
-  useEffect(() => {
-    const dataRow = { nr, name, quantity, price, vat, rowPrice }
-    if (rowPrice !== 0) {
-      saveStorage(dataRow, 'ArrayRow')
+  const handleAdd=()=>{
+    const row={nr,name,quantity,price,vat,rowPrice}
+    if(rowPrice!==0&&nr&&name&&quantity&&price){
+      saveStorage(row,'ItemRows')  
+      alert('dodano pozycję o nazwie '+ name )       
+      setNr('')
+      setName('')
+      setQuantity('')
+      setPrice('')
+      setVat('')
+     
     }
-  }, [rowPrice, name, nr, price, quantity, vat])
+    else{alert('wypełnij wszystkie pola')}
+    
+  }
 
   return (
     <>
@@ -47,6 +53,7 @@ const Row = () => {
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             setNr(event.target.value)
           }
+          value={nr}
         />
       </TableCell>
       <TableCell>
@@ -54,6 +61,8 @@ const Row = () => {
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             setName(event.target.value)
           }
+          value={name}
+          required
         />
       </TableCell>
       <TableCell>
@@ -61,6 +70,7 @@ const Row = () => {
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             setQuantity(event.target.value)
           }
+          value={quantity}
         />
       </TableCell>
       <TableCell>
@@ -68,25 +78,27 @@ const Row = () => {
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             setPrice(event.target.value)
           }
+          value={price}
         />
       </TableCell>
 
       <TableCell>
-        <Select onValueChange={(event) => setVat(event)}>
+        <Select  onValueChange={(event) => setVat(event)}>
           <SelectTrigger className='w-[150px]'>
             <SelectValue placeholder='Wybierz VAT' />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value='7'>7</SelectItem>
-            <SelectItem value='23'>23</SelectItem>
-            <SelectItem value='0'>0</SelectItem>
+            <SelectItem value='23'>23%</SelectItem>
+            <SelectItem value='8'>8%</SelectItem>
+            <SelectItem value='5'>5%</SelectItem>
+            <SelectItem value='0'>0%</SelectItem>
           </SelectContent>
         </Select>
       </TableCell>
 
       <TableCell>{rowPrice.toFixed(2)}</TableCell>
       <TableCell>
-        <Button>Usuń</Button>
+        <Button onClick={handleAdd}>Dodaj</Button>
       </TableCell>
     </>
   )

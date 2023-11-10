@@ -38,7 +38,7 @@ const Navbar = () => {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link
-            href='/items'
+            href='/'
             legacyBehavior
             passHref
           >

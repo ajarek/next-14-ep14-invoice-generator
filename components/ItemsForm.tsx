@@ -12,44 +12,30 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { saveStorage,fetchStorage } from '@/lib/localStorage'
+} from '@/components/ui/table'
 
 export const ItemsForm = () => {
-  const [row, setRow] = useState([<Row key={Math.floor(Math.random() * 1000)} />])
-
- const arrayRow=fetchStorage('ArrayRow')
- const totalPrice=arrayRow?.reduce((acc,item)=>acc+Number(item.rowPrice),0)||0
-
   return (
-    <div className='p-12 flex flex-col'>
-      <Button className='mb-4 self-end bg-green-500  hover:bg-green-400 mx-4' onClick={() => setRow([...row, <Row key={Math.floor(Math.random() * 1000)} />])}>Dodaj</Button>
+    <div className=' px-6 border-muted border-2  rounded-lg relative'>
       <Table>
-        <TableCaption>Wartość Faktury: {totalPrice.toFixed(2)} PLN</TableCaption>
+        <TableCaption>Dodaj Pozycję do Faktury</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Nr</TableHead>
+            <TableHead className='w-[100px]'>Nr</TableHead>
             <TableHead>Nazwa </TableHead>
             <TableHead>Ilość</TableHead>
             <TableHead>Cena</TableHead>
             <TableHead>Stawka Vat</TableHead>
             <TableHead>Razem</TableHead>
-            <TableHead>Usuń</TableHead>
+            <TableHead>Akcja</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {row.map((el, index) => {
-            return (
-              <TableRow key={index}>{el}</TableRow>
-            )
-          })}
+          <TableRow>
+            <Row />
+          </TableRow>
         </TableBody>
       </Table>
-
-
-
     </div>
   )
 }
-
-
