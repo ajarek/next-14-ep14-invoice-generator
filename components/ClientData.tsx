@@ -8,7 +8,7 @@ const ClientData = () => {
   const client = fetchStorage('Client')
 
   return (
-    <div>
+    <div className='mb-8'>
        {client?
     <>
     <p className='text-right'>Wystawiono dnia: <span className=''>{client.invoiceDate}</span></p>
