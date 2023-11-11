@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useEffect } from 'react'
-
+import {saveStorageSingle} from '@/lib/localStorage'
 const formSchema = z.object({
   company: z
     .string()
@@ -52,7 +52,18 @@ export function ClientForm() {
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    alert('Nazwisko: ' + values.company + ' ,email: ' + values.address + ' data: '+ values.invoiceDate)
+    const newClient={
+      company: values.company,
+        address: values.address,
+        nipExhibitor:values.nipExhibitor,
+        name: values.name,
+        customerAddress: values.customerAddress,
+        nipCustomer:values.nipCustomer,
+        invoiceNumber: values.invoiceNumber,
+        invoiceDate:values.invoiceDate
+    }
+    saveStorageSingle(newClient,'Client')
+    alert('dodano klienta: '+ values.name)
   }
 
   useEffect(() => {

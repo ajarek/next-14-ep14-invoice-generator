@@ -4,7 +4,7 @@ import { ClientForm } from '@/components/ClientForm'
 import { ItemsForm } from '@/components/ItemsForm'
 export default function Home() {
   return (
-    <main className="flex h-full flex-col items-center justify-start px-4">
+    <main className="flex min-h-screen flex-col items-center justify-start px-4">
      <ClientForm/>
      <ItemsForm/>
     </main>
