@@ -18,10 +18,15 @@ const Navbar = () => {
     <NavigationMenu>
       <NavigationMenuList className='w-screen  flex justify-between px-8 py-2 border-b border-violet-700'>
         <NavigationMenuItem>
-          <Link
+        <Link
             href='/'
             legacyBehavior
             passHref
+          >
+        <NavigationMenuLink 
+        className='group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-xl font-medium transition-colors hover:bg-violet-600 hover:text-accent-foreground focus:bg-violet-600 focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50'
+           
+            
           >
             <div className='flex items-center cursor-pointer'>
               <Image
@@ -32,8 +37,9 @@ const Navbar = () => {
                 height={20}
                 priority
               />
-              <h1 className='ml-2 font-bold text-xl'>Generator Faktur</h1>
+              <h1 className='ml-2  text-xl'>Generator Faktur</h1>
             </div>
+          </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
@@ -42,7 +48,7 @@ const Navbar = () => {
             legacyBehavior
             passHref
           >
-            <NavigationMenuLink className='group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50'>
+            <NavigationMenuLink className='group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-xl font-medium transition-colors hover:bg-violet-600 hover:text-accent-foreground focus:bg-violet-600 focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50'>
               Twoja Faktura
             </NavigationMenuLink>
           </Link>
