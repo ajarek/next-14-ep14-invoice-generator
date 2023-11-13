@@ -42,7 +42,7 @@ const ItemsData = () => {
               VAT
               <span className='text-xl mx-2'>{vatAllPrice.toFixed(2)} </span>
               Brutto
-              <span className='text-xl ml-2'>{allPrice} PLN</span>
+              <span className='text-xl ml-2'>{allPrice.toFixed(2)} PLN</span>
             </TableCaption>
             <TableHeader>
               <TableRow>
@@ -52,7 +52,6 @@ const ItemsData = () => {
                 <TableHead>Cena PLN</TableHead>
                 <TableHead>Stawka Vat</TableHead>
                 <TableHead>Razem</TableHead>
-                <TableHead>Akcja</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -72,7 +71,6 @@ const ItemsData = () => {
                     <TableCell>{(+el.price).toFixed(2)}</TableCell>
                     <TableCell>{el.vat}%</TableCell>
                     <TableCell>{el.rowPrice}</TableCell>
-                    <TableCell>{'❌'}</TableCell>
                   </TableRow>
                 )
               )}

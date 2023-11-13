@@ -1,6 +1,6 @@
 'use client'
-import {saveStorage} from '@/lib/localStorage'
-import React, { useEffect, useState } from 'react'
+import { saveStorage } from '@/lib/localStorage'
+import React, { useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import {
@@ -20,30 +20,29 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-
 const Row = () => {
-  
   const [nr, setNr] = useState<string>()
   const [name, setName] = useState<string>()
   const [quantity, setQuantity] = useState<string>()
   const [price, setPrice] = useState<string>()
   const [vat, setVat] = useState<string>()
-  let rowPrice = Number((Number(quantity) * Number(price) * (1 + Number(vat) / 100)).toFixed(2) )
+  let rowPrice = Number(
+    (Number(quantity) * Number(price) * (1 + Number(vat) / 100)).toFixed(2)
+  )
 
-  const handleAdd=()=>{
-    const row={nr,name,quantity,price,vat,rowPrice}
-    if(rowPrice!==0&&nr&&name&&quantity&&price){
-      saveStorage(row,'ItemRows')  
-      alert('dodano pozycję o nazwie '+ name )       
+  const handleAdd = () => {
+    const row = { nr, name, quantity, price, vat, rowPrice }
+    if (rowPrice !== 0 && nr && name && quantity && price) {
+      saveStorage(row, 'ItemRows')
+      alert('dodano pozycję o nazwie ' + name)
       setNr('')
       setName('')
       setQuantity('')
       setPrice('')
       setVat('')
-     
+    } else {
+      alert('wypełnij wszystkie pola')
     }
-    else{alert('wypełnij wszystkie pola')}
-    
   }
 
   return (
@@ -83,7 +82,7 @@ const Row = () => {
       </TableCell>
 
       <TableCell>
-        <Select  onValueChange={(event) => setVat(event)}>
+        <Select onValueChange={(event) => setVat(event)}>
           <SelectTrigger className='w-[150px]'>
             <SelectValue placeholder='Wybierz VAT' />
           </SelectTrigger>

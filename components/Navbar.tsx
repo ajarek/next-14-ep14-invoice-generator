@@ -13,10 +13,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ModeToggle } from './ui/toggle-mode'
 
-const Navbar = () => {
+const Navbar = ()=> {
   return (
     <NavigationMenu>
-      <NavigationMenuList className='w-screen  flex justify-between px-8 py-2 border-b border-violet-700'>
+      <NavigationMenuList className='w-full  flex justify-between px-8 py-2 border-b border-violet-700'>
         <NavigationMenuItem>
         <Link
             href='/'

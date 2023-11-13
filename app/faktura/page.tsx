@@ -5,7 +5,7 @@ const Faktura = () => {
   return (
     <div className='flex flex-col h-full   py-8 px-20'>
       <ClientData />
-      <ItemsData/>
+      <ItemsData />
     </div>
   )
 }

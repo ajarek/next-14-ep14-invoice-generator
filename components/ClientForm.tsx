@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useEffect } from 'react'
-import {saveStorageSingle} from '@/lib/localStorage'
+import { saveStorageSingle } from '@/lib/localStorage'
 const formSchema = z.object({
   company: z
     .string()
@@ -24,15 +24,13 @@ const formSchema = z.object({
   address: z
     .string()
     .min(2, { message: 'Adres Firmy musi mieć co najmniej 5 znaków.' }),
-  name: z
-    .string()
-    .min(5, { message: 'Adres Firmy musi mieć  10 znaków.' }),
-    
-    nipExhibitor: z
+  name: z.string().min(5, { message: 'Adres Firmy musi mieć  10 znaków.' }),
+
+  nipExhibitor: z
     .string()
     .min(10, { message: 'NIP Firmy musi mieć  10 znaków.' })
     .max(10, { message: 'NIP Firmy musi mieć  10 znaków.' }),
-    nipCustomer: z
+  nipCustomer: z
     .string()
     .min(10, { message: 'NIP Firmy musi mieć  10 znaków.' })
     .max(10, { message: 'NIP Firmy musi mieć  10 znaków.' }),
@@ -42,8 +40,7 @@ const formSchema = z.object({
   invoiceNumber: z
     .string()
     .min(2, { message: 'Adres Firmy musi mieć co najmniej 5 znaków.' }),
-  invoiceDate: z
-  .string(),
+  invoiceDate: z.string(),
 })
 
 export function ClientForm() {
@@ -52,18 +49,18 @@ export function ClientForm() {
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const newClient={
+    const newClient = {
       company: values.company,
-        address: values.address,
-        nipExhibitor:values.nipExhibitor,
-        name: values.name,
-        customerAddress: values.customerAddress,
-        nipCustomer:values.nipCustomer,
-        invoiceNumber: values.invoiceNumber,
-        invoiceDate:values.invoiceDate
+      address: values.address,
+      nipExhibitor: values.nipExhibitor,
+      name: values.name,
+      customerAddress: values.customerAddress,
+      nipCustomer: values.nipCustomer,
+      invoiceNumber: values.invoiceNumber,
+      invoiceDate: values.invoiceDate,
     }
-    saveStorageSingle(newClient,'Client')
-    alert('dodano klienta: '+ values.name)
+    saveStorageSingle(newClient, 'Client')
+    alert('dodano klienta: ' + values.name)
   }
 
   useEffect(() => {
@@ -71,12 +68,12 @@ export function ClientForm() {
       form.reset({
         company: '',
         address: '',
-        nipExhibitor:'',
+        nipExhibitor: '',
         name: '',
         customerAddress: '',
-        nipCustomer:'',
+        nipCustomer: '',
         invoiceNumber: '',
-        invoiceDate:''
+        invoiceDate: '',
       })
     }
   }, [form, form.formState, form.reset])
@@ -168,7 +165,7 @@ export function ClientForm() {
             </FormItem>
           )}
         />
-         <FormField
+        <FormField
           control={form.control}
           name='nipCustomer'
           render={({ field }) => (
@@ -208,7 +205,7 @@ export function ClientForm() {
               <FormLabel>Data Wystawienia</FormLabel>
               <FormControl>
                 <Input
-                className='min-w-[212px]'
+                  className='min-w-[212px]'
                   placeholder='17.10.2023'
                   type='date'
                   {...field}
@@ -218,15 +215,13 @@ export function ClientForm() {
             </FormItem>
           )}
         />
-      
 
         <Button
           className='absolute right-8 bottom-4'
           type='submit'
         >
-         Zapisz
+          Zapisz
         </Button>
-        
       </form>
     </Form>
   )
