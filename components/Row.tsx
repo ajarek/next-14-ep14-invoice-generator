@@ -28,7 +28,7 @@ const Row = () => {
   const [quantity, setQuantity] = useState<string>()
   const [price, setPrice] = useState<string>()
   const [vat, setVat] = useState<string>()
-  let rowPrice = Number(quantity) * Number(price) * (1 + Number(vat) / 100) || 0
+  let rowPrice = Number((Number(quantity) * Number(price) * (1 + Number(vat) / 100)).toFixed(2) )
 
   const handleAdd=()=>{
     const row={nr,name,quantity,price,vat,rowPrice}
@@ -96,7 +96,7 @@ const Row = () => {
         </Select>
       </TableCell>
 
-      <TableCell>{rowPrice.toFixed(2)}</TableCell>
+      <TableCell>{rowPrice}</TableCell>
       <TableCell>
         <Button onClick={handleAdd}>Dodaj</Button>
       </TableCell>

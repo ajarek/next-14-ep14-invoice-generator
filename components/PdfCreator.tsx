@@ -1,9 +1,10 @@
 'use client'
 import React from 'react'
 import { jsPDF } from "jspdf";
+import "jspdf-autotable";
 import { Button } from '@/components/ui/button';
 
-const PdfCreator = ({company, invoiceNumber,address, nipExhibitor, invoiceDate, name, customerAddress,nipCustomer}) => {
+const PdfCreator = ({company, invoiceNumber,address, nipExhibitor, invoiceDate, name, customerAddress,nipCustomer,invoiceItemsTableData, allPrice}) => {
  const print=()=>{
   const doc = new jsPDF({
     orientation: 'p',//portrait,landscape
@@ -23,6 +24,50 @@ const PdfCreator = ({company, invoiceNumber,address, nipExhibitor, invoiceDate, 
   doc.text(`Odbiorca:${name}`, 120, 70);
   doc.text(`Adres:${customerAddress}`, 120, 75);
   doc.text(`Nip:${nipCustomer}`, 120, 80);
+  doc.text(`Do zaplaty:${allPrice}`, 140, 180);
+
+  const columns = [
+    "Nr",
+    "Nazwa",
+    "Ilosc",
+    "Cena",
+    "Stawka Vat",
+    "Razem"
+  ];
+
+  // Define rows
+  const rows = invoiceItemsTableData.map((item: { nr: string; name: string; quantity: string; price: string; vat: string; rowPrice: string; }) => [
+    item.nr,
+    item.name,
+    item.quantity,
+    item.price,
+    item.vat,
+    item.rowPrice
+  ]);
+
+ 
+
+  // Create the table using jspdf-autotable
+  doc.autoTable(columns, rows, {
+    
+    startY:100,
+    theme: "striped",//'grid','plain'
+    styles: {
+      fontSize: 10,
+      cellWidth: "wrap",
+      cellPadding: 2,
+    },
+    columnStyles: {
+      0: { cellWidth: 30 },
+      1: { cellWidth: 40 },
+      2: { cellWidth: 20 },
+      3: { cellWidth: 20 },
+      4: { cellWidth: 30 },
+      5: { cellWidth: 30 },
+    },
+    margin: { left: 20, right: 20 },
+  });
+
 
   doc.save("Faktura.pdf");
  }

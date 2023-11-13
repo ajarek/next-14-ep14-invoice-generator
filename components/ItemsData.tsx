@@ -28,7 +28,7 @@ const ItemsData = () => {
       acc + item.price * item.quantity,
     0
   )
-  const vatAllPrice = allPrice - nettoAllPrice
+  const vatAllPrice = Number(allPrice) - Number(nettoAllPrice)
 
   return (
     <>
@@ -42,7 +42,7 @@ const ItemsData = () => {
               VAT
               <span className='text-xl mx-2'>{vatAllPrice.toFixed(2)} </span>
               Brutto
-              <span className='text-xl ml-2'>{allPrice.toFixed(2)} PLN</span>
+              <span className='text-xl ml-2'>{allPrice} PLN</span>
             </TableCaption>
             <TableHeader>
               <TableRow>
@@ -71,7 +71,7 @@ const ItemsData = () => {
                     <TableCell>{el.quantity}</TableCell>
                     <TableCell>{(+el.price).toFixed(2)}</TableCell>
                     <TableCell>{el.vat}%</TableCell>
-                    <TableCell>{el.rowPrice.toFixed(2)}</TableCell>
+                    <TableCell>{el.rowPrice}</TableCell>
                     <TableCell>{'❌'}</TableCell>
                   </TableRow>
                 )
@@ -88,6 +88,8 @@ const ItemsData = () => {
               name={client.name}
               customerAddress={client.customerAddress}
               nipCustomer={client.nipCustomer}
+              invoiceItemsTableData={items}
+              allPrice={allPrice}
             />
             <Button
               onClick={() => {
