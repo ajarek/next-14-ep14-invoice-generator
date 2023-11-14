@@ -1,5 +1,12 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+<img width="400" alt="Zrzut ekranu 2023-11-14 221334" src="https://github.com/ajarek/next-14-ep14-invoice-generator/assets/61388692/113cbff5-ca02-4990-a91b-52b4c3f097d5">
+
+<img width="400" alt="Zrzut ekranu 2023-11-14 221237" src="https://github.com/ajarek/next-14-ep14-invoice-generator/assets/61388692/298831d4-ca53-4ff8-a864-46f9c6060fd2">
+
+<img width="300" alt="Zrzut ekranu 2023-11-14 221359" src="https://github.com/ajarek/next-14-ep14-invoice-generator/assets/61388692/1dc42f33-05b5-466d-9d85-5c7797153f73">
+
+
 ## Getting Started
 
 First, run the development server:
